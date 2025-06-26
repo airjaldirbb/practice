@@ -2,6 +2,7 @@
 import React from 'react'
 import Slider from "react-slick";
 import { Box, useTheme, useMediaQuery } from "@mui/material";
+import Image from 'next/image';
 export default function Carousel() {
 
 const slides = [
@@ -66,10 +67,12 @@ const slides = [
         {slides.map((slide) => (
           <div key={slide.id}>
             {slide.bg.startsWith("/") ? (
-              <img
+              <Image
                 src={slide.bg}
                 alt={slide.title}
-                style={{ width: "100%", height: "710px", objectFit: "cover" }}
+                width={2000}
+                height={700}
+                // style={{ width: "100%", height: "710px", objectFit: "cover" }}
               />
             ) : (
               <div
