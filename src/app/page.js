@@ -6,6 +6,8 @@ import HeroSection from "@/components/HeroSection";
 import HeaderWrapper from "@/components/HeaderWrapper";
 import { Box } from "@mui/material";
 import HeroContent from "@/components/HeroContent";
+import CustomerReviews from "@/components/CustomerReviews";
+import Maps from "@/components/Maps";
 export default function Home() {
   return (
 
@@ -20,6 +22,9 @@ export default function Home() {
      <Carousel/>
      <HeroSection/>
      <HeroContent/>
+     <CustomerReviews/>
+  <Maps/>
+
     </>
 
   );
