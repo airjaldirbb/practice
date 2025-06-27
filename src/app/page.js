@@ -8,24 +8,17 @@ import { Box } from "@mui/material";
 import HeroContent from "@/components/HeroContent";
 import CustomerReviews from "@/components/CustomerReviews";
 import Maps from "@/components/Maps";
+import Footer from "@/components/Footer";
 export default function Home() {
   return (
-
-    <>  
-        
-    <HeaderWrapper />
- 
-       {/* <HeaderSection />
-     <Box sx={{ mt: "45px" }}>
-        <MainHeader />
-      </Box> */}
-     <Carousel/>
-     <HeroSection/>
-     <HeroContent/>
-     <CustomerReviews/>
-  <Maps/>
-
+    <>
+      <HeaderWrapper />
+      <Carousel />
+      <HeroSection />
+      <HeroContent />
+      <CustomerReviews />
+      <Maps />
+      <Footer />
     </>
-
   );
 }
