@@ -63,10 +63,11 @@ export default function Carousel() {
       <Box
         sx={{
           width: "100%",
-          maxWidth: "auto",
+          maxWidth: "100%", // Fixed: "auto" is not valid
           mx: "auto",
           mt: 4,
           boxShadow: 6,
+          overflow: "hidden", // Prevent overflow
         }}
       >
         <Slider {...settings}>
@@ -81,7 +82,7 @@ export default function Carousel() {
                       xs: 200,
                       sm: 300,
                       md: 400,
-                      lg: 800,
+                      lg: 700,
                     },
                   }}
                 >
@@ -89,8 +90,11 @@ export default function Carousel() {
                     src={slide.bg}
                     alt={slide.title}
                     fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 1000px) 100vw, 100vw"
+                    style={{
+                      objectFit: "contain",
+                      objectPosition: "center center",
+                    }}
+                    sizes="(max-width: 1200px) 100vw, 100vw"
                     priority
                   />
                 </Box>
@@ -99,7 +103,7 @@ export default function Carousel() {
                   style={{
                     backgroundColor: slide.bg,
                     color: "#fff",
-                    height: 600,
+                    height: 400,
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
