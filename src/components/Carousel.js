@@ -65,7 +65,7 @@ export default function Carousel() {
           width: "100%",
           maxWidth: "100%", // Fixed: "auto" is not valid
           mx: "auto",
-          mt: 4,
+          mt: 2,
           boxShadow: 6,
           overflow: "hidden", // Prevent overflow
         }}
@@ -82,7 +82,7 @@ export default function Carousel() {
                       xs: 200,
                       sm: 300,
                       md: 400,
-                      lg: 700,
+                      lg: 550,
                     },
                   }}
                 >
