@@ -11,10 +11,10 @@ import {
   List,
   ListItem,
   ListItemText,
-  Link, Divider
+  Link,
+  Divider,
 } from "@mui/material";
 export default function Footer() {
-
   return (
     <>
       <Box sx={{ position: "relative", backgroundColor: "#232F3E" }}>
@@ -52,10 +52,10 @@ export default function Footer() {
             >
               {/* Unskew content inside */}
               <Box sx={{ transform: "skewX(5deg)" }}>
-                <Typography sx={{ fontWeight: 400, textAlign: 'right' }}>
+                <Typography sx={{ fontWeight: 400, textAlign: "right" }}>
                   <strong>Need Help</strong> Call Us 24/7:
                 </Typography>
-                <Typography sx={{ mt: 1, textAlign: 'right', fontWeight: 600 }}>
+                <Typography sx={{ mt: 1, textAlign: "right", fontWeight: 600 }}>
                   +91-9717872100
                 </Typography>
               </Box>
@@ -107,17 +107,16 @@ export default function Footer() {
                     px: 3,
                     height: 40,
                     fontSize: "0.9rem",
-                    color: '#fff',
-                    backgroundColor: '#727272',
-                    '&:hover': {
-                      backgroundColor: '#fff',
-                      color: '#000',
+                    color: "#fff",
+                    backgroundColor: "#727272",
+                    "&:hover": {
+                      backgroundColor: "#fff",
+                      color: "#000",
                     },
                   }}
                 >
                   Sign Up
                 </Button>
-
               </Box>
             </Box>
           </Box>
@@ -126,7 +125,7 @@ export default function Footer() {
         {/* </Box> */}
 
         {/* Footer container with top padding to prevent overlap */}
-        <Container sx={{ pt: 5 }}>
+        <Container sx={{ pt: 0 }}>
           {/* Optional top row if needed */}
           <Grid
             container
@@ -146,13 +145,10 @@ export default function Footer() {
             sx={{ mt: 4 }}
           >
             <Grid item xs={12} sm={6} md={3}>
-              <Typography
-
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4" }}
-              >
+              <Typography sx={{ fontWeight: 600, mb: 0, color: "#6EC1E4" }}>
                 Cloud Services
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
                   "Data Backup",
                   "CDN",
@@ -169,27 +165,28 @@ export default function Footer() {
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "#ddd",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
                 ))}
               </List>
-              <Typography
-
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4" }}
-              >
+              <Typography sx={{ fontWeight: 600, mb: 0.5, color: "#6EC1E4" }}>
                 Submit Ticket
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {["Cloud Servers"].map((item, i) => (
                   <ListItem key={i} disableGutters>
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "#ddd",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
@@ -197,42 +194,37 @@ export default function Footer() {
               </List>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
-              <Typography
-
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4" }}
-              >
+              <Typography sx={{ fontWeight: 600, mb: 0.5, color: "#6EC1E4" }}>
                 Our Infrastructure
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
-
                   "Data Backup|CDN| IAAS| SAAS| DR on",
                   "Demand|Zero Data Loss| Remote Infra",
                   "Management Services| Enterprise Email",
                   "Solutions: Microsoft Exchange",
                   "Server|QMail or Zimbra|We support all",
-
                 ].map((item, i) => (
                   <ListItem key={i} disableGutters>
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "rgba(255,255,255,0.3)",
-                        backgroundColor: 'transparent '
+                        backgroundColor: "transparent ",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
                 ))}
               </List>
               <Typography
-
-                sx={{ fontWeight: 600, mt: 3, mb: .5, color: "#6EC1E4" }}
+                sx={{ fontWeight: 600, mt: 3, mb: 0.5, color: "#6EC1E4" }}
               >
                 Public Cloud Product
-
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
                   "Cloud Servers",
                   "Cloud Managed",
@@ -248,24 +240,22 @@ export default function Footer() {
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "#ddd",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
                 ))}
               </List>
-
             </Grid>
 
             <Grid item xs={12} sm={6} md={3}>
-              <Typography
-
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4" }}
-              >
+              <Typography sx={{ fontWeight: 600, mb: 0.5, color: "#6EC1E4" }}>
                 Know to Us
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
                   "About Us",
                   "Contact Us",
@@ -274,28 +264,25 @@ export default function Footer() {
                   "SLA",
                   "T & C",
                   "Acceptable Use Policy",
-
                 ].map((item, i) => (
                   <ListItem key={i} disableGutters>
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "#ddd",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
                 ))}
               </List>
-              <Typography
-
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4" }}
-              >
+              <Typography sx={{ fontWeight: 600, mb: 0.5, color: "#6EC1E4" }}>
                 About Policy
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
-
                   "About Policy",
                   "Refund Policy",
                   "Privacy Policy",
@@ -308,8 +295,10 @@ export default function Footer() {
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
+                        fontSize: "0.8rem",
                         color: "#ddd",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
@@ -317,16 +306,20 @@ export default function Footer() {
               </List>
             </Grid>
 
-
             {/* Column 4: Arise Server */}
             <Grid item xs={12} sm={6} md={3}>
               <Typography
+                sx={{
+                  fontWeight: 600,
+                  
 
-                sx={{ fontWeight: 600, mb: .5, color: "#6EC1E4", textAlign: 'right' }}
+                  color: "#6EC1E4",
+                  textAlign: "right",
+                }}
               >
                 Arise Server
               </Typography>
-              <List dense>
+              <List dense disablePadding sx={{ mt: 0 }}>
                 {[
                   "Skype : ariseservers",
                   "Mail: Info(at)ariseserver(dot)com",
@@ -337,8 +330,11 @@ export default function Footer() {
                     <ListItemText
                       primary={item}
                       primaryTypographyProps={{
-                        fontSize: "0.9rem",
-                        color: "rgba(255,255,255,0.3)", textAlign: 'right'
+                        fontSize: "0.8rem",
+                        color: "rgba(255,255,255,0.3)",
+                        textAlign: "right",
+                        lineHeight: 0.6,
+                        mb: 0,
                       }}
                     />
                   </ListItem>
@@ -348,32 +344,57 @@ export default function Footer() {
                 <Divider sx={{ borderColor: "rgba(255,255,255,0.3)" }} />
 
                 {/* First image: Map */}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', py: 1 }}>
-                  <Image src="/footer/map-image.png" width={250} height={100} alt="Map showing location" />
+                <Box
+                  sx={{ display: "flex", justifyContent: "flex-end", py: 1 }}
+                >
+                  <Image
+                    src="/footer/map-image.png"
+                    width={250}
+                    height={100}
+                    alt="Map showing location"
+                  />
                 </Box>
 
                 <Divider sx={{ borderColor: "rgba(255,255,255,0.3)" }} />
 
                 {/* Second: Bitcoin & PayUMoney side by side */}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', gap: 1, py: 1 }}>
-                  <Image src="/footer/bitcoin-accepteds.png" width={140} height={20} alt="Bitcoin accepted" />
-                  <Image src="/footer/payumoney.png" width={140} height={20} alt="PayUMoney supported" />
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    alignItems: "center",
+                    gap: 1,
+                    py: 1,
+                  }}
+                >
+                  <Image
+                    src="/footer/bitcoin-accepteds.png"
+                    width={140}
+                    height={20}
+                    alt="Bitcoin accepted"
+                  />
+                  <Image
+                    src="/footer/payumoney.png"
+                    width={140}
+                    height={20}
+                    alt="PayUMoney supported"
+                  />
                 </Box>
 
                 <Divider sx={{ borderColor: "rgba(255,255,255,0.3)" }} />
 
                 {/* Third image: ISO certification */}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end', py: 1 }}>
-                  <Image src="/footer/iso-certify-arise-server.png" width={160} height={20} alt="ISO certified Arise Server" />
+                <Box
+                  sx={{ display: "flex", justifyContent: "flex-end", py: 1 }}
+                >
+                  <Image
+                    src="/footer/iso-certify-arise-server.png"
+                    width={160}
+                    height={20}
+                    alt="ISO certified Arise Server"
+                  />
                 </Box>
-
               </Box>
-
-
-
-
-
-
             </Grid>
           </Grid>
         </Container>
@@ -396,7 +417,13 @@ export default function Footer() {
                 textAlign: { xs: "center", md: "left" },
               }}
             >
-              <Typography sx={{ color: "rgba(255,255,255,0.3)", fontSize: '.8rem', fontWeight: 600 }}>
+              <Typography
+                sx={{
+                  color: "rgba(255,255,255,0.3)",
+                  fontSize: ".8rem",
+                  fontWeight: 600,
+                }}
+              >
                 © 2010 - 2025{" "}
                 <Link
                   href="https://www.ariseserver.com/terms-conditions/"
@@ -411,11 +438,12 @@ export default function Footer() {
                 >
                   Arise Server
                 </Link>{" "}
-                <span style={{
-                  color: "rgba(255,255,255,0.3)",
-                }}>
+                <span
+                  style={{
+                    color: "rgba(255,255,255,0.3)",
+                  }}
+                >
                   - All rights reserved.
-
                 </span>
               </Typography>
             </Grid>
@@ -430,7 +458,9 @@ export default function Footer() {
                 mt: { xs: 1, md: 0 },
               }}
             >
-              <Typography sx={{ color: "#ccc", fontSize: '.8rem', fontWeight: 600 }}>
+              <Typography
+                sx={{ color: "#ccc", fontSize: ".8rem", fontWeight: 600 }}
+              >
                 <Link
                   href="https://www.ariseserver.com/terms-conditions/"
                   underline="none"
@@ -443,12 +473,14 @@ export default function Footer() {
                   }}
                 >
                   Terms of Service
-                </Link>{" "}   <span style={{
-                  color: "rgba(255,255,255,0.3)",
-                }}>
+                </Link>{" "}
+                <span
+                  style={{
+                    color: "rgba(255,255,255,0.3)",
+                  }}
+                >
                   |
-                </span>
-                {" "}
+                </span>{" "}
                 <Link
                   href="https://www.ariseserver.com/privacy-policy/"
                   underline="none"
@@ -461,13 +493,14 @@ export default function Footer() {
                   }}
                 >
                   Privacy Policy
-                </Link>{" "}   <span style={{
-                  color: "rgba(255,255,255,0.3)",
-                }}>
+                </Link>{" "}
+                <span
+                  style={{
+                    color: "rgba(255,255,255,0.3)",
+                  }}
+                >
                   |
-
-                </span>
-                {" "}
+                </span>{" "}
                 <Link
                   href="https://www.ariseserver.com"
                   underline="none"

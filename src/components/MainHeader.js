@@ -4,7 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { styled } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
-import SearchIcon from '@mui/icons-material/Search';
+import SearchIcon from "@mui/icons-material/Search";
+
+import Link from "next/link";
 import {
   Box,
   Container,
@@ -16,13 +18,14 @@ import {
   Select,
   FormControl,
   TextField,
-  IconButton, Button, ListSubheader
-} from '@mui/material';
-
+  IconButton,
+  Button,
+  ListSubheader,
+} from "@mui/material";
 
 export default function MainHeader({ sticky }) {
   const [showSearch, setShowSearch] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const router = useRouter();
   const [values, setValues] = useState({
@@ -49,27 +52,32 @@ export default function MainHeader({ sticky }) {
           },
         },
       },
-    }, disableScrollLock: true,
+    },
+    disableScrollLock: true,
   };
   const regionServerData = {
     DedicatedServers: [
       {
         name: "Germany Server",
-        slug: "germany-dedicated-server",
+        slug: "Germany",
         flag: "germany16x13.png",
       },
-      { name: "France Server", slug: "france-server", flag: "france16x13.png" },
-      { name: "UK Server", slug: "uk-server", flag: "uk16x13.png" },
-      { name: "Italy Server", slug: "italy-server", flag: "italy16x13.png" },
-      { name: "Russia Server", slug: "russia-server", flag: "russia16x13.png" },
+      { name: "France Server", slug: "France", flag: "france16x13.png" },
+      { name: "UK Server", slug: "UK", flag: "uk16x13.png" },
+      { name: "Italy Server", slug: "italyserver", flag: "italy16x13.png" },
+      { name: "Russia Server", slug: "russiaserver", flag: "russia16x13.png" },
       {
         name: "Europe Server",
-        slug: "eu-server",
+        slug: "euserver",
         flag: "europe.png",
       },
       { name: "Canada Server", slug: "canada-server", flag: "canada16x13.png" },
       { name: "UK Server", slug: "uk-server", flag: "uk16x13.png" },
-      { name: "Australia Server", slug: "au-server", flag: "australia16x13.png" },
+      {
+        name: "Australia Server",
+        slug: "au-server",
+        flag: "australia16x13.png",
+      },
       { name: "India Server", slug: "india-server", flag: "india16x13.png" },
       {
         name: "Israel Server",
@@ -78,8 +86,16 @@ export default function MainHeader({ sticky }) {
       },
       { name: "Japan Server", slug: "Japan-server", flag: "japan16x13.png" },
       { name: "UK Server", slug: "uk-server", flag: "uk16x13.png" },
-      { name: "Malasia Server", slug: "malasia-server", flag: "malasia16x13.png" },
-      { name: "Singapur Server", slug: "singapur-server", flag: "singapur16x13.png" },
+      {
+        name: "Malasia Server",
+        slug: "malasia-server",
+        flag: "malasia16x13.png",
+      },
+      {
+        name: "Singapur Server",
+        slug: "singapur-server",
+        flag: "singapur16x13.png",
+      },
       {
         name: "Thailand Server",
         slug: "Thailand-dedicated-server",
@@ -136,25 +152,39 @@ export default function MainHeader({ sticky }) {
       { name: "Israel Server", slug: "israel-server", flag: "israel.png" },
     ],
   };
-  const getLabel = (region) => {
-    if (region === "DedicatedServers") return "Dedicated Servers";
-    if (region === "ServerSupport") return "Server Support";
-    // Default fallback: keep as-is (or add " Servers")
-    return region;
-  };
 
   const [selected, setSelected] = useState({
     DedicatedServers: "",
     VPS: "",
     Cloud: "",
     Hosting: "",
-    ServerSupport: ""
+    ServerSupport: "",
   });
 
+  // const handleChange = (region) => (event) => {
+  //   const selectedSlug = event.target.value;
+  //   setSelected((prev) => ({ ...prev, [region]: selectedSlug }));
+  //   router.push(`/servers/${selectedSlug}`);
+  // };
   const handleChange = (region) => (event) => {
-    const selectedSlug = event.target.value;
-    setSelected((prev) => ({ ...prev, [region]: selectedSlug }));
-    router.push(`/servers/${selectedSlug}`);
+    const slug = event.target.value;
+
+    setSelected((prev) => ({
+      ...prev,
+      [region]: slug,
+    }));
+    if (region === "DedicatedServers") {
+      router.push(`/dedicated/${slug}`);
+    } else if (region === "VPS") {
+      router.push(`/vps/${slug}`);
+    } else {
+      router.push(`/servers/${slug}`); // fallback or other category
+    }
+  };
+  const getLabel = (region) => {
+    if (region === "DedicatedServers") return "Dedicated Servers";
+    if (region === "VPS") return "VPS Servers";
+    return `${region} Servers`;
   };
 
   return (
@@ -218,16 +248,20 @@ export default function MainHeader({ sticky }) {
                       key={region}
                       size="small"
                       sx={{
-                        flex: "1 1 calc(15% - 16px)", // 4 per row with gap=2 (16px)
+                        flex: "1 1 calc(15% - 16px)",
                         minWidth: 149,
                       }}
                     >
-                      <InputLabel style={{ fontSize: '.8rem' }}>{getLabel(region)}</InputLabel>
+                      <InputLabel style={{ fontSize: ".8rem" }}>
+                        {getLabel(region)}
+                      </InputLabel>
                       <Select
-                        value={selected[region]}
+                        value={selected[region] || ""}
                         label={`${region} Servers`}
                         onChange={handleChange(region)}
-                        MenuProps={menuProps}
+                        MenuProps={{
+                          PaperProps: { style: { maxHeight: 300 } },
+                        }}
                       >
                         {servers.map((server, idx) => (
                           <MenuItem key={idx} value={server.slug}>
@@ -238,58 +272,53 @@ export default function MainHeader({ sticky }) {
                                 sx={{ width: 20, height: 15 }}
                                 variant="square"
                               />
-                              <Typography variant="body2" >
+                              <Typography variant="body2">
                                 {server.name}
                               </Typography>
                             </Box>
                           </MenuItem>
                         ))}
+
+                        {/* Dedicated Servers Footer Buttons */}
                         {region === "DedicatedServers" && (
                           <ListSubheader disableSticky sx={{ mt: 1 }}>
                             <Box
                               display="flex"
-                              justifyContent="space-between"
-                              alignItems="center"
-                              px={2}
-                              py={1}
+                              flexDirection="column"
                               gap={1}
+                              px={2}
                             >
                               <Button
+                                fullWidth
                                 variant="contained"
-                                size="small"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  // handleLoadMore();
+                                  router.push("/dedicated"); // go to all dedicated servers
                                 }}
                                 sx={{
-                                  width: '190px',          
-                                  height: '40px',
-                                  backgroundColor: '#00C1CF',
-                                  color: '#fff',
-                                  textTransform: 'none',
-                                  '&:hover': {
-                                    backgroundColor: '#00a8b0'
+                                  backgroundColor: "#00C1CF",
+                                  color: "#fff",
+                                  textTransform: "none",
+                                  "&:hover": {
+                                    backgroundColor: "#00a8b0",
                                   },
                                 }}
                               >
                                 All Dedicated Servers
                               </Button>
-
                               <Button
+                                fullWidth
                                 variant="contained"
-                                size="small"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  // handleViewAll();
+                                  router.push("/dedicated/custom-order"); // custom order page
                                 }}
                                 sx={{
-                                   width: '190px',          
-                                  height: '40px',
-                                  backgroundColor: '#00C1CF',
-                                  color: '#fff',
-                                  textTransform: 'none',
-                                  '&:hover': {
-                                    backgroundColor: '#00a8b0',
+                                  backgroundColor: "#00C1CF",
+                                  color: "#fff",
+                                  textTransform: "none",
+                                  "&:hover": {
+                                    backgroundColor: "#00a8b0",
                                   },
                                 }}
                               >
@@ -299,32 +328,23 @@ export default function MainHeader({ sticky }) {
                           </ListSubheader>
                         )}
 
+                        {/* VPS Footer Button */}
                         {region === "VPS" && (
                           <MenuItem divider>
-                            <Box
-                              display="flex"
-                              justifyContent="space-between"
-                              alignItems="center"
-                              width="100%"
-                              gap={1}
-                              pt={1}
-                            >
-
-                         <Button
+                            <Box width="100%" pt={1}>
+                              <Button
+                                fullWidth
                                 variant="contained"
-                                size="small"
                                 onClick={(e) => {
                                   e.stopPropagation();
-                                  // handleViewAll();
+                                  router.push("/vps");
                                 }}
                                 sx={{
-                                   width: '190px',          
-                                  height: '40px',
-                                  backgroundColor: '#00C1CF',
-                                  color: '#fff',
-                                  textTransform: 'none',
-                                  '&:hover': {
-                                    backgroundColor: '#00a8b0',
+                                  backgroundColor: "#00C1CF",
+                                  color: "#fff",
+                                  textTransform: "none",
+                                  "&:hover": {
+                                    backgroundColor: "#00a8b0",
                                   },
                                 }}
                               >
@@ -333,15 +353,14 @@ export default function MainHeader({ sticky }) {
                             </Box>
                           </MenuItem>
                         )}
-
                       </Select>
-
-
                     </FormControl>
                   ))}
 
-
-                  <IconButton onClick={() => setShowSearch((prev) => !prev)} color="primary">
+                  <IconButton
+                    onClick={() => setShowSearch((prev) => !prev)}
+                    color="primary"
+                  >
                     <SearchIcon />
                   </IconButton>
                 </Box>
@@ -349,16 +368,14 @@ export default function MainHeader({ sticky }) {
             </Box>
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-                width: '100%',
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                width: "100%",
                 mt: 2,
                 gap: 1,
               }}
             >
-
-
               {showSearch && (
                 <TextField
                   size="small"
@@ -366,11 +383,16 @@ export default function MainHeader({ sticky }) {
                   placeholder="Search servers..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  sx={{ width: 150, backgroundColor: '#fff', borderRadius: 1, mr: 7, mb: 1 }}
+                  sx={{
+                    width: 150,
+                    backgroundColor: "#fff",
+                    borderRadius: 1,
+                    mr: 7,
+                    mb: 1,
+                  }}
                 />
               )}
             </Box>
-
           </Container>
         </Box>
       </header>
