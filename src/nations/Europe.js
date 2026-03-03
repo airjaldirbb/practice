@@ -1,10 +1,5 @@
-import React from 'react'
+const Europe = () => {
+  return <div>Europe Page</div>;
+};
 
-export default function 
-() {
-  return (
-    <div>
-        hi europe
-    </div>
-  )
-}
+export default Europe;
